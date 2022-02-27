@@ -9,7 +9,19 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> devide = (x, y) -> x / y; //тут возможно деление на ноль. Необходимо обработать исключение.
+
+    BinaryOperator<Integer> devide = (x, y) -> {
+        if (y != 0) {
+            return x / y;
+        } else {
+            System.err.println("Ошибка деления на ноль.");
+            System.exit(0);
+            return 0;
+        }
+    };
+
+     //тут возможно деление на ноль.
+
 
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
